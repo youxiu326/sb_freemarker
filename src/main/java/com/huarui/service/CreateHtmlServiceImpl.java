@@ -46,8 +46,9 @@ public class CreateHtmlServiceImpl implements ICreateHtmlService {
          submit()有返回值Future。
          通过Future可以获取各个线程的完成情况，是否有异常，还能试图取消任务的执行。
      */
-    //https://www.cnblogs.com/shamo89/p/6694133.html
 
+    //参考1 https://www.cnblogs.com/shamo89/p/6694133.html
+    //参考2(推荐) https://blog.csdn.net/qq_30413781/article/details/79892331
 
     @Autowired
     public Configuration configuration;

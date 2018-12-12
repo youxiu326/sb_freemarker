@@ -20,8 +20,34 @@ public class CreateHtmlServiceImpl implements ICreateHtmlService {
 
     private static int corePoolSize = Runtime.getRuntime().availableProcessors();
     //多线程生成静态页面
-    private static ThreadPoolExecutor executor  = new ThreadPoolExecutor(corePoolSize, corePoolSize+1, 10l, TimeUnit.SECONDS,
+    private static ThreadPoolExecutor executor  = new ThreadPoolExecutor(
+            corePoolSize,
+            corePoolSize+1,
+            10l,
+            TimeUnit.SECONDS,
             new LinkedBlockingQueue<>(1000));
+
+
+    /*  corePoolSize    核心线程数，默认情况下核心线程会一直存活
+    *   maximumPoolSize 线程池所能容纳的最大线程数。超过这个数的线程将被阻塞
+    *   keepAliveTime   非核心线程的闲置超时时间，超过这个时间就会被回收
+    *   unit            指定keepAliveTime的单位
+    *   workQueue       线程池中的任务队列
+    */
+
+
+    /**
+     * 向线程池提交任务
+     　　提交任务有execute()和submit()两个方法，下面看看他俩的区别：
+     　　①接收参数不同
+     　　execute()的参数是Runnable，submit()参数可以是Runnable，也可以是Cable。
+     　　②返回值不同
+     　　execute()没有返回值
+         submit()有返回值Future。
+         通过Future可以获取各个线程的完成情况，是否有异常，还能试图取消任务的执行。
+     */
+    //https://www.cnblogs.com/shamo89/p/6694133.html
+
 
     @Autowired
     public Configuration configuration;
